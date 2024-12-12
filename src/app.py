@@ -7,7 +7,7 @@ def main():
     login_controller = LoginController()
     encargado_controller = EncargadoController()
 
-    print("--- Sistema de Gestión de Habitaciones ---")
+    print("--- Bienvenido a Duerme Bien ---")
     
     # Inicio de sesión
     email = input("Ingresa tu correo electrónico: ")

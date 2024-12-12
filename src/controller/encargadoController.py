@@ -124,27 +124,28 @@ class EncargadoController:
 
     def get_client_assignment(self):
         try:
-            # Conectar a la base de datos
+            
             connection = mysql.connector.connect(**self.config)
             cursor = connection.cursor(dictionary=True)
 
-            # Consulta para obtener el nombre del cliente y número de la habitación
+            
             query = """
             SELECT client_name, room_number
             FROM client_assignment;
             """
             cursor.execute(query)
 
-            # Obtener los resultados
+            
             results = cursor.fetchall()
 
-            # Convertir resultados en una lista de objetos
+            
             client_assignments = [{"client_name": row["client_name"], "room_number": row["room_number"]} for row in results]
 
-            # Imprimir la tabla para visualización (opcional)
+            
             print("Tabla de asignaciones:")
             for assignment in client_assignments:
                 print(f"Cliente: {assignment['client_name']}, Habitación: {assignment['room_number']}")
+                
 
             return client_assignments
 
@@ -160,11 +161,11 @@ class EncargadoController:
 
     def get_rooms_actived(self):
         try:
-            # Conectar a la base de datos
+           
             connection = mysql.connector.connect(**self.config)
             cursor = connection.cursor(dictionary=True)
 
-            # Consulta para obtener habitaciones activas
+            
             query = """
             SELECT id_room, room_number, number_people, orientation, price
             FROM rooms
@@ -172,10 +173,10 @@ class EncargadoController:
             """
             cursor.execute(query)
 
-            # Obtener los resultados
+            
             results = cursor.fetchall()
 
-            # Convertir resultados en una lista de objetos
+            
             rooms_actived = [
                 {
                     "id_room": row["id_room"],
@@ -187,10 +188,8 @@ class EncargadoController:
                 for row in results
             ]
 
-            # Imprimir habitaciones activas (opcional)
-            print("Habitaciones activas:")
-            for room in rooms_actived:
-                print(f"Habitación: {room['room_number']}, Capacidad: {room['number_people']}, Orientación: {room['orientation']}, Precio: {room['price']}")
+            
+         
 
             return rooms_actived
 
@@ -205,11 +204,11 @@ class EncargadoController:
 
     def get_rooms_inactived(self):
         try:
-            # Conectar a la base de datos
+            
             connection = mysql.connector.connect(**self.config)
             cursor = connection.cursor(dictionary=True)
 
-            # Consulta para obtener habitaciones inactivas
+            
             query = """
             SELECT id_room, room_number, number_people, orientation, price
             FROM rooms
@@ -217,10 +216,10 @@ class EncargadoController:
             """
             cursor.execute(query)
 
-            # Obtener los resultados
+            
             results = cursor.fetchall()
 
-            # Convertir resultados en una lista de objetos
+            
             rooms_inactived = [
                 {
                     "id_room": row["id_room"],
@@ -232,10 +231,7 @@ class EncargadoController:
                 for row in results
             ]
 
-            # Imprimir habitaciones inactivas (opcional)
-            print("Habitaciones inactivas:")
-            for room in rooms_inactived:
-                print(f"Habitación: {room['room_number']}, Capacidad: {room['number_people']}, Orientación: {room['orientation']}, Precio: {room['price']}")
+         
 
             return rooms_inactived
 

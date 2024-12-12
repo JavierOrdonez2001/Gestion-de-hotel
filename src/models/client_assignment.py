@@ -13,6 +13,7 @@ class Client_assignment(Base):
     client_name = Column(String(100), nullable=False)
     client_rut = Column(String(30), nullable=False, unique=True)
     client_number = Column(Float, nullable=False)
+    room_number = Column(String(20), nullable=False)
 
     id_usuario = Column(String(50), ForeignKey('users.id_user', ondelete='SET NULL'), nullable=True)
     user = relationship('User', back_populates='client_assignment')
